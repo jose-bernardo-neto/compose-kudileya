@@ -38,7 +38,7 @@ services:
       WAHA_API_KEY: kudileya2026
       WHATSAPP_API_USER: admin
       WHATSAPP_API_KEY: kudileya2026
-      WHATSAPP_HOOK_URL: http://host.docker.internal:5678/webhook/webhook
+      WHATSAPP_HOOK_URL: http://172.209.209.203:5678/webhook/webhook
       WHATSAPP_DEFAULT_ENGINE: GOWS
       WHATSAPP_HOOK_EVENTS: message
     volumes:
@@ -51,8 +51,8 @@ services:
     image: n8nio/n8n:latest
     platform: linux/amd64
     environment:
-      WEBHOOK_URL: http://host.docker.internal:5678
-      N8N_HOST: host.docker.internal
+      WEBHOOK_URL: http://172.209.209.203:5678
+      N8N_HOST: 172.209.209.203
       GENERIC_TIMEZONE: America/Sao_Paulo
       N8N_LOG_LEVEL: debug
       N8N_SECURE_COOKIE: false

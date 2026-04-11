@@ -37,17 +37,15 @@ services:
     networks:
       - kudileya-network
     healthcheck:
-      test:
-        [
-          'CMD',
-          'node',
-          '-e',
-          "require('http').get('http://localhost:3333/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})",
-        ]
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3333/health"] # Use 127.0.0.1 em vez de localhost
       interval: 30s
-      timeout: 3s
+      timeout: 10s
+      retries: 3
+        interval: 30s
+        timeout: 3s
       retries: 3
       start_period: 40s
+      
     logging:
       driver: 'json-file'
       options:

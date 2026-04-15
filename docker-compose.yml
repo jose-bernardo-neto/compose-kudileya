@@ -14,7 +14,7 @@ services:
     networks:
       - kudileya-network
 
- api:
+  api:
     build:
       context: ../api-kudileya-backend/
       dockerfile: Dockerfile

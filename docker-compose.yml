@@ -14,7 +14,7 @@ services:
     networks:
       - kudileya-network
 
-  api:
+ api:
     build:
       context: ../api-kudileya-backend/
       dockerfile: Dockerfile
@@ -30,11 +30,14 @@ services:
       - HOST=0.0.0.0
       - ADMIN_KEY=${ADMIN_KEY:-change-me-in-production}
       - AI_PROVIDER=${AI_PROVIDER:-gemini}
-      - AI_MODEL=${AI_MODEL:-gemini-1.5-flash}
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.0-flash-exp}  # ← CORRIGIDO: AI_MODEL → GEMINI_MODEL
+      - GEMINI_API_KEY=AIzaSyBoKGmm8aKDPtubuO1s0L788RaKSsq8UNs
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-3.5-turbo}  # ← ADICIONADO
+      - AI_TIMEOUT=${AI_TIMEOUT:-30000}  # ← ADICIONADO
+      - AI_MAX_TOKENS=${AI_MAX_TOKENS:-1000}  # ← ADICIONADO
       - CORS_ORIGIN=${CORS_ORIGIN:-*}
-      - MAX_FILE_SIZE=${MAX_FILE_SIZE:-10485760}
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE:-20485760}
       - CACHE_TTL=${CACHE_TTL:-300}
       - RATE_LIMIT_MAX=${RATE_LIMIT_MAX:-100}
       - RATE_LIMIT_TIME_WINDOW=${RATE_LIMIT_TIME_WINDOW:-900000}
@@ -48,11 +51,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '10m'
-        max-file: '3'
+      start_period: 40s
 
   redis:
     image: redis:latest

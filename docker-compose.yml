@@ -31,7 +31,7 @@ services:
       - ADMIN_KEY=${ADMIN_KEY:-change-me-in-production}
       - AI_PROVIDER=${AI_PROVIDER:-gemini}
       - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.0-flash-exp}  # ← CORRIGIDO: AI_MODEL → GEMINI_MODEL
-      - GEMINI_API_KEY=AIzaSyBoKGmm8aKDPtubuO1s0L788RaKSsq8UNs
+      - GEMINI_API_KEY=yourkeyhere
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-3.5-turbo}  # ← ADICIONADO
       - AI_TIMEOUT=${AI_TIMEOUT:-30000}  # ← ADICIONADO
